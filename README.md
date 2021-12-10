@@ -1,135 +1,18 @@
 This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app).
 
-## Project Structure
+# DAO Global Hackathon Submission (Community & NFTs)
+Project name: Spore
+Submission Link: https://github.com/dsine420/spore
+Date when work began: 11/21/21
+Person of contact: Dylan Dilla, dylan@dsine.llc
 
-The default template is a monorepo created with [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/).
+## For the judges consideration
+I found the hackathon towards the beginning of November shortly after it began. Despite having no Solidity experience, I decided to enter the competition and I began brainstorming dApp idea while going through different Solidity tutorials and documentation.
 
-Workspaces makes it possible to setup multiple packages in such a way that we only need to run `yarn install` once to install all of them in
-a single pass. Dependencies are hoisted at the root.
+A week or so later, I came up with Spore. The idea behind Spore was originally something like this: A team could go onto Spore and propose a web3 project and request a payment from the community in return for making the project open source and available for anyone. If the community liked the proposal, the community would fundraise a target that exceeds the requested payment. The raised funds would be used to enter a liquidity pool or some other sort of income generating vehicle. These funds would generate passive income that would go towards paying the developers and the community. This creates a win/win/win situation. Developers get paid for their work in an income stream, community members receive new tools and passive income streams, and the community gets liquidity and new tools.
 
-```
-my-eth-app
-├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
-└── packages
-    ├── contracts
-    │   ├── README.json
-    │   ├── package.json
-    │   └── src
-    │       ├── abis
-    │       │   ├── erc20.json
-    │       │   └── ownable.json
-    │       ├── addresses.js
-    │       └── index.js
-    ├── react-app
-    │   ├── README.md
-    │   ├── node_modules
-    │   ├── package.json
-    │   ├── public
-    │   │   ├── favicon.ico
-    │   │   ├── index.html
-    │   │   ├── logo192.png
-    │   │   ├── logo512.png
-    │   │   ├── manifest.json
-    │   │   └── robots.txt
-    │   └── src
-    │       ├── App.css
-    │       ├── App.js
-    │       ├── App.test.js
-    │       ├── ethereumLogo.svg
-    │       ├── index.css
-    │       ├── index.js
-    │       ├── serviceWorker.js
-    │       └── setupTests.js
-    └── subgraph
-        ├── README.md
-        ├── abis
-        │   └── erc20.json
-        ├── package.json
-        ├── schema.graphql
-        ├── src
-        │   └── mappings
-        │       ├── tokens.ts
-        │       └── transfers.ts
-        └── subgraph.yaml
-```
+In more detail, after a project is approved, developers begin their work and both the team and the community members that contributed towards the project receive NFTs that represent a tradeable cashflow courtesy of [Superfluid Finance](https://github.com/superfluid-finance/protocol-monorepo/tree/cfa_wrapper_library/examples/tradeable-cashflow). This tradeable cashflow would be configured such that everyone receives an income flow proportionate to the amount of money they contributed to funding the project, except for the developers. The developers declare in their proposal what cut they receive.
 
-Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with npm.
+Ultimately this project proved to be too complicated for the time frame and experience level I had. I spoke to Fran at Superfluid and he gave me the idea to make something for the "quadratic freelancer". And that is what I have submitted today. The code is incomplete but the plan here is that there would be a front end where users could browse projects and developers. This front end would interact with a Singleton "[ProjectHall](https://github.com/dsine420/spore/blob/master/packages/contracts/projects/ProjectHall.sol)". Each developer has a profile housing all of their projects. Users could open Superfluid Constant Flow streams between themselves and a developer to show their support for their work. Then users would receive content from the developers as NFTs. The developers would be able to send out different NFTs based on levels of support using the `createTokenForAllUsersWithFlow` [function](https://github.com/dsine420/spore/blob/master/packages/contracts/content/ContentToken.sol#L27). (larger constant flows => better content).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### React App
-
-#### `yarn react-app:start`
-
-Runs the React app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will automatically reload if you make changes to the code.<br>
-You will see the build errors and lint warnings in the console.
-
-#### `yarn react-app:test`
-
-Runs the React test watcher in an interactive mode.<br>
-By default, runs tests related to files changed since the last commit.
-
-[Read more about testing React.](https://facebook.github.io/create-react-app/docs/running-tests)
-
-#### `yarn react-app:build`
-
-Builds the React app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the React documentation on [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-#### `yarn react-app:eject`
-
-**Note: this is a one-way operation. Once you `react-app:eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` the React app at any time. This command will
-remove the single build dependency from your React package.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right
-into the `react-app` package so you have full control over them. All of the commands except `react-app:eject` will still work,
-but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `react-app:eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### Subgraph
-
-The Graph is a tool for for indexing events emitted on the Ethereum blockchain. It provides you with an easy-to-use GraphQL API. <br/>
-
-To learn more, check out the [The Graph documentation](https://thegraph.com/docs).
-
-#### `yarn subgraph:codegen`
-
-Generates AssemblyScript types for smart contract ABIs and the subgraph schema.
-
-#### `yarn subgraph:build`
-
-Compiles the subgraph to WebAssembly.
-
-#### `yarn subgraph:auth`
-
-Before deploying your subgraph, you need to sign up on the
-[Graph Explorer](https://thegraph.com/explorer/). There, you will be given an access token. Drop it in the command
-below:
-
-```sh
-GRAPH_ACCESS_TOKEN=your-access-token-here yarn subgraph:auth
-```
-
-#### `yarn subgraph:deploy`
-
-Deploys the subgraph to the official Graph Node.<br/>
-
-Replace `paulrberg/create-eth-app` in the package.json script with your subgraph's name.
-
-You may also want to [read more about the hosted service](https://thegraph.com/docs/quick-start#hosted-service).
+I will continue to work and develop this project as my experience deepens with Solidity. Thank you for your time and consideration!
