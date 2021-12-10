@@ -130,6 +130,35 @@ function App() {
       );
   }
 
+  /* Open wallet selection modal. */
+  const loadWeb3Modal = useCallback(async () => {
+    const newProvider = await web3Modal.connect();
+
+    newProvider.on("accountsChanged", accounts => {
+      console.log("accountsChanged", accounts);
+      setUserAddress(accounts[0]);
+      checkWinner();
+    });
+
+    sf = new SuperfluidSDK.Framework({
+      web3: new Web3(newProvider),
+      tokens: ["fDAI"]
+    });
+    await sf.initialize();
+
+    dai = await sf.contracts.TestToken.at(sf.tokens.fDAI.address);
+    daix = sf.tokens.fDAIx;
+    LotterySuperApp.setProvider(newProvider);
+    app = await LotterySuperApp.at(APP_ADDRESS);
+
+    global.web3 = sf.web3;
+
+    const accounts = await sf.web3.eth.getAccounts();
+    setUserAddress(accounts[0]);
+
+    setProvider(new Web3Provider(newProvider));
+  }, [checkWinner]);
+
   return (
     <div>
       <Header>
