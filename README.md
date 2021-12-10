@@ -2,8 +2,11 @@ This project was bootstrapped with [Create Eth App](https://github.com/paulrberg
 
 # DAO Global Hackathon Submission (Community & NFTs)
 Project name: Spore
+
 Submission Link: https://github.com/dsine420/spore
+
 Date when work began: 11/21/21
+
 Person of contact: Dylan Dilla, dylan@dsine.llc
 
 ## For the judges consideration
